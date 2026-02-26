@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Recipe System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>🍴 Menu</h2>
+    <button onclick="location.reload()">Home</button>
+    <button onclick="showLogin()">Login</button>
+<button onclick="showFav()">❤️ Favorites</button>
+<button onclick="showProfile()">Profile</button>
+<button onclick="logoutUser()">Logout</button>
+
+</div>
+
+
+<div class="main">
+    
+    <h1>🍲 Food Recipe Recommendation System</h1>
+
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Search recipe...">
+        <button type="button" onclick="searchRecipe()">Search</button>
+        <h3 id="welcomeUser"></h3>
+    </div>
+    <div style="margin:15px 0;">
+
+    <button onclick="loadCategory('Seafood')">Seafood</button>
+    <button onclick="loadCategory('Dessert')">Dessert</button>
+    <button onclick="loadCategory('Vegetarian')">Vegetarian</button>
+    <button onclick="loadCategory('Chicken')">Chicken</button>
+
+    <select onchange="loadCountry(this.value)">
+        <option value="">Select Country</option>
+        <option value="Indian">Indian</option>
+        <option value="Italian">Italian</option>
+        <option value="Chinese">Chinese</option>
+        <option value="American">American</option>
+        <option value="Mexican">Mexican</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Thai">Thai</option>
+    </select>
+
+</div>
+    <div id="recipes" class="recipes">
+        {% for r in recipes %}
+        <div class="card">
+            <img src="{{r.image}}">
+            <h3>{{r.recipe_name}}</h3>
+            <p><b>Ingredients:</b> {{r.ingredients}}</p>
+            <p><b>Process:</b> {{r.process}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- LOGIN BOX -->
+<div id="loginBox" class="login-box">
+    <h3>Login</h3>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    
+    <button onclick="loginUser()">Login</button>
+    <button onclick="registerUser()">Register</button>
+    <button onclick="logoutUser()">Logout</button>
+
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
